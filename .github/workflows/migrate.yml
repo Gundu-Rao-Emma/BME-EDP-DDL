@@ -1,0 +1,27 @@
+name: 'Migrate database schema'
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  migrate-database:
+    name: Run Flyway migrations
+    runs-on: ubuntu-20.04
+    env:
+      REDSHIFT_HOST: localhost
+      REDSHIFT_PORT: 10000
+      REDSHIFT_USER: edp_ddl_admin
+      REDSHIFT_DB: dataeng_dev
+      REDSHIFT_PASS: SNbTG5dwc5kA
+    steps:
+      - uses: actions/checkout@v2
+      - run: >-
+          docker run --rm
+          --volume ${{ github.workspace }}/sql:/flyway/sql:ro
+          flyway/flyway:7.12.1-alpine
+          -url="jdbc:postgresql://${{ env.REDSHIFT_HOST }}:${{ env.REDSHIFT_PORT }}/${{ env.REDSHIFT_DB }}?sslmode=require"
+          -user="${{ env.REDSHIFT_USER }}"
+          -password="${{ env.REDSHIFT_PASS }}"
+          migrate
