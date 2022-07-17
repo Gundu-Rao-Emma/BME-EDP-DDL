@@ -17,12 +17,6 @@ jobs:
       REDSHIFT_PASS: SNbTG5dwc5kA
     steps:
       - uses: actions/checkout@v2
-      - run: mkdir -p /test
-      - run: echo hello > test/world.txt
-      - uses: actions/upload-artifact@v3
-        with:
-         name: my-artifact
-         path: test/world.txt
       - run: >-
           docker run --rm
           --volume ${{ github.workspace }}/sql:/flyway/sql:ro
