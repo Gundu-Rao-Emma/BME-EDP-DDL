@@ -17,6 +17,9 @@ jobs:
       REDSHIFT_PASS: SNbTG5dwc5kA
     steps:
       - uses: actions/checkout@v2
+      - run: > 
+           docker build . -t foobar 
+           -f ${{ github.workspace }}/Dockerfile
       - run: >-
           docker run --rm
           --volume ${{ github.workspace }}/sql:/flyway/sql:ro
