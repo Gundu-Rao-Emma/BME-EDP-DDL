@@ -27,4 +27,5 @@ jobs:
           -url="jdbc:redshift://${{ env.REDSHIFT_HOST }}:${{ env.REDSHIFT_PORT }}/${{ env.REDSHIFT_DB }}?sslmode=require"
           -user="${{ env.REDSHIFT_USER }}"
           -password="${{ env.REDSHIFT_PASS }}"
+          -jarDirs=/flyway/drivers
           migrate
