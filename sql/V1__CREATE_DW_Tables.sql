@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS test.addr RESTRICT;
+DROP TABLE IF EXISTS dbt_grao.addr RESTRICT;
 
-CREATE TABLE  IF NOT EXISTS test.addr
+CREATE TABLE  IF NOT EXISTS dbt_grao.addr
 (
 	locr_id              integer  NOT NULL ,
 	bldg_nm              nvarchar(100)  NULL ,
