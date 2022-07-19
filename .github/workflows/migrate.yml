@@ -10,11 +10,11 @@ jobs:
     name: Run Flyway migrations
     runs-on: ubuntu-20.04
     env:
-      REDSHIFT_HOST: localhost
-      REDSHIFT_PORT: 10000
-      REDSHIFT_USER: edp_ddl_admin
-      REDSHIFT_DB: dataeng_dev
-      REDSHIFT_PASS: SNbTG5dwc5kA
+      REDSHIFT_HOST: bettzeit-dw-instance.cmmw5dhxikj7.eu-central-1.redshift.amazonaws.com
+      REDSHIFT_PORT: 5439
+      REDSHIFT_USER: gundu_rao
+      REDSHIFT_DB: bettzeit
+      REDSHIFT_PASS: PgWs8Wvv6D
     steps:
       - uses: actions/checkout@v2
       - run: > 
